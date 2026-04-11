@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV | Muhammad Naufal Santoso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#f7f4ef;--white:#ffffff;--ink:#1a1714;--accent:#1a3a8f;--accent2:#2d55c7;
+      --muted:#8a8278;--border:#e2ddd8;--surface:#eeeae4;--input-bg:#fdfbf8;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:100;background:rgba(247,244,239,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    nav{max-width:1200px;margin:0 auto;padding:0 2.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;cursor:pointer}
+    .nav-initials{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1rem;letter-spacing:0.05em}
+    .nav-name{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;color:var(--ink)}
+    .nav-links{list-style:none;display:flex;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+    .nav-links li a{display:block;padding:0.45rem 1.1rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--muted);border-right:1px solid var(--border);transition:background 0.2s,color 0.2s;font-weight:500;cursor:pointer}
+    .nav-links li:last-child a{border-right:none}
+    .nav-links li a:hover,.nav-links li a.active{background:var(--ink);color:#fff}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+    @media(max-width:600px){
+      .hamburger{display:flex}
+      .nav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(247,244,239,0.98);border:none;border-radius:0;border-bottom:1px solid var(--border);z-index:99}
+      .nav-links.open{display:flex}
+      .nav-links li a{border-right:none;border-bottom:1px solid var(--border);padding:0.75rem 2rem}
+    }
+
+    /* PAGES */
+    .page{display:none;animation:fadeUp 0.55s ease both}
+    .page.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideRight{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes slideLeft{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+
+    /* ====================== BERANDA ====================== */
+    .hero{min-height:calc(100vh - 60px);display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;padding:0 2.5rem;align-items:center;gap:4rem}
+    .hero-text{animation:slideRight 0.9s ease both}
+    .hero-eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem}
+    .eyebrow-line{width:40px;height:2px;background:var(--accent)}
+    .eyebrow-text{font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:500}
+    h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,5vw,4.8rem);line-height:1.02;font-weight:700;margin-bottom:1rem}
+    h1 .line2{display:block;font-style:italic;color:var(--accent)}
+    .hero-role{font-size:0.9rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:400}
+    .hero-desc{font-size:1rem;line-height:1.8;color:#5a544e;max-width:440px;font-weight:300;margin-bottom:2.5rem}
+    .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{background:var(--accent);color:#fff;text-decoration:none;padding:0.8rem 2rem;border-radius:4px;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:background 0.2s,transform 0.15s;cursor:pointer;border:none;font-family:"Outfit",sans-serif}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+    .btn-outline{border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;padding:0.8rem 2rem;border-radius:4px;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:background 0.2s,color 0.2s;cursor:pointer;background:transparent;font-family:"Outfit",sans-serif}
+    .btn-outline:hover{background:var(--ink);color:#fff}
+    .hero-visual{animation:slideLeft 0.9s ease both;display:flex;flex-direction:column;gap:1.5rem}
+    .hero-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,0.05)}
+    .card-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+    .skill-bars{display:flex;flex-direction:column;gap:0.8rem}
+    .skill-row{display:flex;align-items:center;gap:1rem}
+    .skill-name{font-size:0.82rem;font-weight:500;width:120px;flex-shrink:0}
+    .skill-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+    .skill-fill{height:100%;background:var(--accent);border-radius:2px}
+    .skill-pct{font-size:0.75rem;color:var(--muted);width:32px;text-align:right}
+    .stat-row{display:flex;gap:1px;background:var(--border);border-radius:8px;overflow:hidden}
+    .stat-item{flex:1;background:var(--white);padding:1.25rem;text-align:center}
+    .stat-num{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:700;color:var(--accent);display:block}
+    .stat-lbl{font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+    .achievement-banner{background:var(--accent);color:#fff;border-radius:8px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem}
+    .ach-icon{font-size:1.4rem}
+    .ach-text{font-size:0.82rem;font-weight:500;line-height:1.5}
+    .ach-text span{display:block;font-size:0.72rem;opacity:0.75;font-weight:300}
+    section.highlights{max-width:1200px;margin:0 auto;padding:4rem 2.5rem 6rem}
+    .sec-header{display:flex;align-items:center;gap:1rem;margin-bottom:3rem}
+    .sec-line{width:3px;height:32px;background:var(--accent)}
+    h2{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:600}
+    .highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .hl-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:2rem;transition:border-color 0.3s,transform 0.3s}
+    .hl-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+    .hl-icon{font-size:1.75rem;margin-bottom:1rem}
+    h3.hl-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;margin-bottom:0.5rem}
+    .hl-card p{font-size:0.88rem;color:var(--muted);line-height:1.7;font-weight:300}
+
+    /* ====================== PENGALAMAN ====================== */
+    .page-top{padding:5rem 2.5rem 2rem;max-width:1200px;margin:0 auto}
+    .eyebrow{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem}
+    .page-h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;line-height:1.1;margin-bottom:0.5rem}
+    .page-h1 em{color:var(--accent);font-style:italic}
+    .page-subtitle{color:var(--muted);font-size:1rem;font-weight:300;margin-bottom:2rem}
+    .content-wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start}
+    .sec-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:0.5rem}
+    .content-h2{font-family:"Cormorant Garamond",serif;font-size:1.75rem;font-weight:600;margin-bottom:2rem}
+    .main-section{margin-bottom:3.5rem}
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:"";position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+    .tl-item{position:relative;margin-bottom:2.25rem}
+    .tl-dot{position:absolute;left:-2rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);transform:translateX(-4.5px)}
+    .tl-period{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem}
+    .tl-h3{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:600;margin-bottom:0.1rem}
+    .tl-company{font-size:0.82rem;color:var(--accent);font-weight:500;margin-bottom:0.6rem}
+    .tl-list{padding-left:1.1rem;display:flex;flex-direction:column;gap:0.3rem}
+    .tl-list li{font-size:0.86rem;color:var(--muted);line-height:1.6;font-weight:300}
+    .tl-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.65rem}
+    .tag{font-size:0.68rem;letter-spacing:0.06em;background:var(--surface);border:1px solid var(--border);padding:0.2rem 0.55rem;border-radius:3px;color:var(--ink)}
+    .sidebar{display:flex;flex-direction:column;gap:1.5rem}
+    .side-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.6rem}
+    .side-card .sec-label{margin-bottom:1.1rem}
+    .edu-item{margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--border)}
+    .edu-item:last-child{margin:0;padding:0;border:none}
+    .edu-year{font-size:0.7rem;color:var(--muted);margin-bottom:0.15rem}
+    .edu-degree{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:600;margin-bottom:0.1rem}
+    .edu-school{font-size:0.8rem;color:var(--accent)}
+    .edu-note{font-size:0.75rem;color:var(--muted);margin-top:0.15rem}
+    .skills-list{display:flex;flex-direction:column;gap:0.6rem}
+    .skill-row2{display:flex;align-items:center;gap:0.75rem}
+    .skill-name2{font-size:0.8rem;font-weight:500;width:100px;flex-shrink:0}
+    .skill-track2{flex:1;height:3px;background:var(--border);border-radius:2px}
+    .skill-fill2{height:100%;background:var(--accent);border-radius:2px}
+    .hard-skills{display:flex;flex-wrap:wrap;gap:0.4rem}
+    .hsk{font-size:0.72rem;background:var(--surface);border:1px solid var(--border);padding:0.25rem 0.6rem;border-radius:4px;color:var(--ink)}
+    .ach-item-blue{display:flex;align-items:flex-start;gap:0.75rem;background:var(--accent);border-radius:8px;padding:1rem 1.1rem;color:#fff}
+    .ach-body strong{display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.2rem}
+    .ach-body span{font-size:0.78rem;opacity:0.8}
+
+    /* ====================== SERTIFIKAT ====================== */
+    .cert-count{font-size:0.8rem;color:var(--accent);font-weight:500;margin-bottom:2rem}
+    .filter-wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 2rem;display:flex;gap:0.5rem;flex-wrap:wrap}
+    .filter-btn{border:1px solid var(--border);background:var(--white);color:var(--muted);padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;font-family:"Outfit",sans-serif;cursor:pointer;transition:all 0.2s;font-weight:500}
+    .filter-btn:hover,.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .cert-grid{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    .cert-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;cursor:pointer}
+    .cert-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,58,143,0.1)}
+    .cert-img-wrap{position:relative;width:100%;padding-top:70%;background:var(--surface);overflow:hidden}
+    .cert-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+    .cert-card:hover .cert-img-wrap img{transform:scale(1.04)}
+    .cert-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;color:var(--border)}
+    .cert-placeholder-icon{font-size:2.5rem}
+    .cert-placeholder-text{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+    .cert-overlay{position:absolute;inset:0;background:rgba(26,58,143,0.75);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s}
+    .cert-card:hover .cert-overlay{opacity:1}
+    .cert-overlay-text{color:#fff;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500}
+    .cert-body{padding:1rem 1.1rem 1.2rem}
+    .cert-tag{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.3rem}
+    .cert-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:600;line-height:1.35;margin-bottom:0.25rem;color:var(--ink)}
+    .cert-issuer{font-size:0.78rem;color:var(--muted);font-weight:300}
+    .cert-year-tag{font-size:0.72rem;color:var(--muted);margin-top:0.4rem;display:flex;align-items:center;gap:0.3rem}
+    .cert-year-tag::before{content:"";width:16px;height:1px;background:var(--border)}
+
+    /* ====================== KONTAK ====================== */
+    .contact-wrap{max-width:1200px;margin:0 auto;padding:0 2.5rem 6rem;display:grid;grid-template-columns:360px 1fr;gap:4rem;align-items:start}
+    .profile-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+    .profile-banner{height:80px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%)}
+    .profile-body{padding:1.5rem 1.75rem 1.75rem}
+    .avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:top;margin-top:-40px;margin-bottom:1rem;border:3px solid var(--white);display:block;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+    .profile-name{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:700;margin-bottom:0.15rem}
+    .profile-role{font-size:0.78rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;font-weight:500}
+    .profile-bio{font-size:0.86rem;color:var(--muted);line-height:1.7;font-weight:300}
+    .contact-links{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.6rem}
+    .link-list{list-style:none;display:flex;flex-direction:column;gap:0}
+    .link-item{display:flex;align-items:center;gap:1rem;padding:0.8rem 0;border-bottom:1px solid var(--border)}
+    .link-item:last-child{border-bottom:none;padding-bottom:0}
+    .link-icon{width:34px;height:34px;background:var(--surface);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+    .link-info strong{display:block;font-size:0.78rem;font-weight:500;margin-bottom:0.1rem}
+    .link-info span{font-size:0.82rem;color:var(--muted)}
+    .open-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(26,58,143,0.08);border:1px solid rgba(26,58,143,0.2);color:var(--accent);border-radius:6px;padding:0.6rem 1rem;font-size:0.8rem;font-weight:500;margin-top:1.5rem;width:100%;justify-content:center}
+    .open-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 1.5s ease infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    .form-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:2.5rem}
+    .form-h3{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:600;margin-bottom:0.4rem}
+    .form-intro{font-size:0.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.65;font-weight:300}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.2rem}
+    label{font-size:0.74rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+    input,textarea,select{background:var(--input-bg);border:1px solid var(--border);border-radius:6px;color:var(--ink);font-family:"Outfit",sans-serif;font-size:0.9rem;padding:0.75rem 1rem;outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%}
+    input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,58,143,0.08)}
+    textarea{resize:vertical;min-height:130px}
+    .form-footer{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;flex-wrap:wrap;gap:1rem}
+    .form-note{font-size:0.78rem;color:var(--muted)}
+    .btn-submit{background:var(--accent);color:#fff;border:none;cursor:pointer;font-family:"Outfit",sans-serif;font-weight:500;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 2.5rem;border-radius:4px;transition:background 0.2s,transform 0.15s}
+    .btn-submit:hover{background:var(--accent2);transform:translateY(-2px)}
+
+    /* LIGHTBOX */
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:999;align-items:center;justify-content:center;padding:2rem}
+    .lightbox.open{display:flex}
+    .lightbox-inner{position:relative;max-width:860px;width:100%;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+    .lightbox-img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,0.5)}
+    .lightbox-close{position:absolute;top:-2.5rem;right:0;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;opacity:0.8;transition:opacity 0.2s}
+    .lightbox-close:hover{opacity:1}
+    .lightbox-caption{color:#fff;margin-top:1rem;text-align:center;font-size:0.9rem;opacity:0.8}
+
+    footer{border-top:1px solid var(--border);padding:1.75rem 2.5rem;text-align:center;color:var(--muted);font-size:0.82rem}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){.cert-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:900px){
+      .content-wrap{grid-template-columns:1fr;gap:3rem}
+      .contact-wrap{grid-template-columns:1fr;gap:3rem}
+    }
+    @media(max-width:768px){
+      .hero{grid-template-columns:1fr;min-height:auto;padding:3rem 1.5rem}
+      .hero-visual{display:none}
+      .highlights-grid{grid-template-columns:1fr}
+      .cert-grid{grid-template-columns:repeat(2,1fr)}
+      .form-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){.cert-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-brand" onclick="navigate('beranda')">
+      <div class="nav-initials">MN</div>
+      <span class="nav-name">Muhammad Naufal Santoso</span>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="navigate('beranda')" id="nav-beranda" class="active">About Naufal</a></li>
+      <li><a onclick="navigate('pengalaman')" id="nav-pengalaman">Experience</a></li>
+      <li><a onclick="navigate('sertifikat')" id="nav-sertifikat">Awardee</a></li>
+      <li><a onclick="navigate('kontak')" id="nav-kontak">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ======================== PAGE: BERANDA ======================== -->
+<div class="page active" id="page-beranda">
+  <main>
+    <section class="hero" aria-label="Hero intro">
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">Curriculum Vitae</span>
+        </div>
+        <h1>Muhammad<span class="line2">Naufal Santoso</span></h1>
+        <p class="hero-role">Penyiar Radio &bull; Moderator &bull; Mahasiswa TI</p>
+        <p class="hero-desc">Mahasiswa Teknik Informatika UMS yang aktif di dunia penyiaran dan edutainment. Penyiar Rapma FM, jurnalis, moderator, dan pemimpin tim yang berpengalaman.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="navigate('pengalaman')">Lihat Pengalaman</button>
+          <button class="btn-outline" onclick="navigate('kontak')">Hubungi Saya</button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="achievement-banner">
+          <div class="ach-icon">&#127942;</div>
+          <div class="ach-text">Juara 2 Lomba Debat Nasional<span>se-Universitas Jawa Tengah &mdash; 2025</span></div>
+        </div>
+        <div class="hero-card">
+          <p class="card-label">Keahlian Utama</p>
+          <div class="skill-bars">
+            <div class="skill-row"><span class="skill-name">Komunikasi</span><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div><span class="skill-pct">95%</span></div>
+            <div class="skill-row"><span class="skill-name">Leadership</span><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div><span class="skill-pct">88%</span></div>
+            <div class="skill-row"><span class="skill-name">Penyiaran</span><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div><span class="skill-pct">90%</span></div>
+            <div class="skill-row"><span class="skill-name">Negosiasi</span><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div><span class="skill-pct">82%</span></div>
+            <div class="skill-row"><span class="skill-name">Canva/Capcut</span><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div><span class="skill-pct">85%</span></div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-num">3,59</span><span class="stat-lbl">IPK</span></div>
+          <div class="stat-item"><span class="stat-num">6+</span><span class="stat-lbl">Organisasi</span></div>
+          <div class="stat-item"><span class="stat-num">2025</span><span class="stat-lbl">Aktif</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" aria-labelledby="highlights-h2">
+      <div class="sec-header">
+        <div class="sec-line"></div>
+        <h2 id="highlights-h2">Peran &amp; Keahlian Saya</h2>
+      </div>
+      <div class="highlights-grid">
+        <article class="hl-card">
+          <div class="hl-icon">&#127897;&#65039;</div>
+          <h3 class="hl-title">Penyiaran Radio</h3>
+          <p>Penyiar aktif Rapma FM Surakarta sejak Maret 2025. Mengelola program regular, Khasanah Petang, Classic Night, berita, dan adlibs iklan.</p>
+        </article>
+        <article class="hl-card">
+          <div class="hl-icon">&#127908;</div>
+          <h3 class="hl-title">Moderator &amp; MC</h3>
+          <p>Berpengalaman memandu Webinar, Talkshow, dan Kolokium Riset Mahasiswa di lingkungan akademik Universitas Muhammadiyah Surakarta.</p>
+        </article>
+        <article class="hl-card">
+          <div class="hl-icon">&#128200;</div>
+          <h3 class="hl-title">Manajemen &amp; Kepemimpinan</h3>
+          <p>Koordinator Fundraising Rapmafest #12, Pimpinan Redaksi Majalah GEMA, dan mentor kegiatan mentoring LPPIK UMS.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ======================== PAGE: PENGALAMAN ======================== -->
+<div class="page" id="page-pengalaman">
+  <main>
+    <div class="page-top">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Rekam Jejak</span></div>
+      <h1 class="page-h1">Pengalaman &amp; <em>Organisasi</em></h1>
+      <p class="page-subtitle">Event, organisasi, pengalaman kerja, dan pencapaian</p>
+    </div>
+    <div class="content-wrap">
+      <div>
+        <div class="main-section">
+          <p class="sec-label">Event &amp; Organisasi</p>
+          <h2 class="content-h2">Kiprah Organisasi</h2>
+          <div class="timeline">
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2023</p>
+              <p class="tl-h3">Pimpinan Redaksi</p>
+              <p class="tl-company">GEMA Majalah SMA MTA &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Menentukan visi, misi, dan arah redaksi majalah.</li><li>Membuat rencana edisi: tema, rubrik, deadline, target pembaca.</li><li>Memimpin rapat redaksi dan mengawasi produksi konten.</li><li>Mengelola etika jurnalistik dan kode etik penerbitan.</li></ul>
+              <div class="tl-tags"><span class="tag">Jurnalistik</span><span class="tag">Kepemimpinan</span><span class="tag">Editorial</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2023</p>
+              <p class="tl-h3">Contributor</p>
+              <p class="tl-company">MTA TV &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Meliput peristiwa dan isu di lapangan.</li><li>Menggali fakta dari narasumber untuk redaksi TV.</li><li>Menghasilkan konten teks berita, video liputan, dan foto siap tayang.</li></ul>
+              <div class="tl-tags"><span class="tag">Jurnalistik TV</span><span class="tag">Liputan</span><span class="tag">Produksi Konten</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2024</p>
+              <p class="tl-h3">Divisi Perlengkapan</p>
+              <p class="tl-company">Paraclimbing Nasional &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Mengatur distribusi dan pengadaan barang ke lokasi acara.</li><li>Memastikan semua perlengkapan berfungsi: sound, listrik, pencahayaan.</li><li>Menata perlengkapan sesuai kebutuhan panitia.</li></ul>
+              <div class="tl-tags"><span class="tag">Event Management</span><span class="tag">Logistik</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">Maret 2025 &mdash; November 2026</p>
+              <p class="tl-h3">Penyiar</p>
+              <p class="tl-company">Radio Rapma FM &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Mencari, membuat, dan membacakan berita.</li><li>Membacakan Adlibs Iklan dan Newsflash.</li><li>Penyiar Regular Program &amp; Special Program Classic Night.</li><li>Penyiar Khasanah Petang edisi Ceramah Malam Sabtu.</li></ul>
+              <div class="tl-tags"><span class="tag">Penyiaran</span><span class="tag">On-Air</span><span class="tag">Berita</span><span class="tag">Public Speaking</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">Juli &mdash; Oktober 2025</p>
+              <p class="tl-h3">Koordinator Fundraising</p>
+              <p class="tl-company">Rapmafest #12 &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Memilih metode Sponsor, Merchandise, Tenant, dan Dana Usaha.</li><li>Menyusun Timeline dan Kontak Prestasi Proposal.</li><li>Negosiasi dengan pihak eksternal &amp; mengontrol progress sponsor.</li><li>Membuat HPP Merchandise, modal dana usaha, dan laporan keuangan.</li></ul>
+              <div class="tl-tags"><span class="tag">Fundraising</span><span class="tag">Negosiasi</span><span class="tag">Keuangan</span><span class="tag">Manajemen Tim</span></div>
+            </article>
+          </div>
+        </div>
+        <div class="main-section">
+          <p class="sec-label">Work Experience</p>
+          <h2 class="content-h2">Pengalaman Kerja</h2>
+          <div class="timeline">
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2025</p>
+              <p class="tl-h3">Moderator Webinar</p>
+              <p class="tl-company">Parade Teknik Informatika &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Membuka, mengatur jalannya, dan menutup acara.</li><li>Mengelola interaksi peserta selama sesi berlangsung.</li></ul>
+              <div class="tl-tags"><span class="tag">MC</span><span class="tag">Public Speaking</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2025</p>
+              <p class="tl-h3">Moderator Talkshow</p>
+              <p class="tl-company">Diskusi Profesi dan Akademik &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Mengendalikan alur talkshow dan menggali pembahasan mendalam.</li><li>Mengelola interaksi audiens secara dinamis.</li></ul>
+              <div class="tl-tags"><span class="tag">Moderator</span><span class="tag">Talkshow</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2025</p>
+              <p class="tl-h3">Moderator Kolma</p>
+              <p class="tl-company">Kolokium Riset Mahasiswa &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Mengatur jalannya diskusi akademik sesuai tema riset.</li><li>Menjembatani topik agar mudah dipahami audiens.</li><li>Menyimpulkan hasil diskusi dan menutup acara.</li></ul>
+              <div class="tl-tags"><span class="tag">Riset</span><span class="tag">Akademik</span><span class="tag">Moderator</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2025 &mdash; 2026</p>
+              <p class="tl-h3">Mentor Kegiatan Mentoring</p>
+              <p class="tl-company">LPPIK UMS &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Mengatur jalannya mentoring setiap hari Sabtu.</li><li>Membimbing hafalan dan mengontrol progress mengaji mentee.</li><li>Memberi motivasi agar mentee konsisten membaca Al-Quran.</li></ul>
+              <div class="tl-tags"><span class="tag">Mentoring</span><span class="tag">Pembimbingan</span></div>
+            </article>
+            <article class="tl-item">
+              <div class="tl-dot"></div>
+              <p class="tl-period">2026</p>
+              <p class="tl-h3">Teknisi</p>
+              <p class="tl-company">Rapma FM &mdash; Surakarta</p>
+              <ul class="tl-list"><li>Melakukan perawatan rutin dan perbaikan hardware &amp; software.</li><li>Mengatur instalasi dan jaringan siaran.</li><li>Mengelola peralatan siaran, aplikasi, dan web Rapma FM.</li><li>Menjaga keamanan media sosial Rapma FM.</li></ul>
+              <div class="tl-tags"><span class="tag">Teknisi</span><span class="tag">IT Support</span><span class="tag">Jaringan</span></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar">
+        <div class="side-card">
+          <p class="sec-label">Prestasi</p>
+          <div class="ach-item-blue">
+            <div class="ach-icon">&#127942;</div>
+            <div class="ach-body"><strong>Juara 2 Debat Nasional</strong><span>se-Universitas Jawa Tengah &mdash; Tahun 2025</span></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <p class="sec-label">Pendidikan</p>
+          <div class="edu-item"><p class="edu-year">2024 &mdash; Sekarang</p><p class="edu-degree">S1 Teknik Informatika</p><p class="edu-school">Universitas Muhammadiyah Surakarta</p><p class="edu-note">IPK: 3,59 / 4,00</p></div>
+          <div class="edu-item"><p class="edu-year">2021 &mdash; 2023</p><p class="edu-degree">SMA IPA</p><p class="edu-school">SMA MTA Surakarta</p></div>
+          <div class="edu-item"><p class="edu-year">2018 &mdash; 2021</p><p class="edu-degree">SMP</p><p class="edu-school">SMP MTA Gemolong</p></div>
+        </div>
+        <div class="side-card">
+          <p class="sec-label">Soft Skill</p>
+          <div class="skills-list">
+            <div class="skill-row2"><span class="skill-name2">Komunikasi</span><div class="skill-track2"><div class="skill-fill2" style="width:95%"></div></div></div>
+            <div class="skill-row2"><span class="skill-name2">Leadership</span><div class="skill-track2"><div class="skill-fill2" style="width:88%"></div></div></div>
+            <div class="skill-row2"><span class="skill-name2">Negosiasi</span><div class="skill-track2"><div class="skill-fill2" style="width:83%"></div></div></div>
+            <div class="skill-row2"><span class="skill-name2">Berpikir Kritis</span><div class="skill-track2"><div class="skill-fill2" style="width:87%"></div></div></div>
+            <div class="skill-row2"><span class="skill-name2">Manaj. Waktu</span><div class="skill-track2"><div class="skill-fill2" style="width:80%"></div></div></div>
+          </div>
+        </div>
+        <div class="side-card">
+          <p class="sec-label">Hard Skill</p>
+          <div class="hard-skills">
+            <span class="hsk">Capcut</span><span class="hsk">Canva</span><span class="hsk">Photoshop</span>
+            <span class="hsk">Spreadsheet</span><span class="hsk">Google Doc</span><span class="hsk">Python</span>
+            <span class="hsk">XAMPP</span><span class="hsk">PHP MyAdmin</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<!-- ======================== PAGE: SERTIFIKAT ======================== -->
+<!-- ======================== PAGE: SERTIFIKAT ======================== -->
+<div class="page" id="page-sertifikat">
+  <main>
+    <div class="page-top">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Portofolio Dokumen</span></div>
+      <h1 class="page-h1">Sertifikat &amp; <em>Penghargaan</em></h1>
+      <p class="page-subtitle">Kumpulan sertifikat pelatihan, organisasi, dan pencapaian</p>
+      <p class="cert-count">15 Sertifikat</p>
+    </div>
+    <div class="filter-wrap">
+      <button class="filter-btn active" onclick="filterCert('semua',this)">Semua</button>
+      <button class="filter-btn" onclick="filterCert('komunitas',this)">Komunitas</button>
+      <button class="filter-btn" onclick="filterCert('moderator',this)">Moderator</button>
+      <button class="filter-btn" onclick="filterCert('prestasi',this)">Prestasi</button>
+      <button class="filter-btn" onclick="filterCert('pelatihan',this)">Pelatihan</button>
+    </div>
+    <div class="cert-grid" id="certGrid">
+
+      <!-- 1 -->
+      <div class="cert-card" data-cat="pelatihan" onclick="bukaLightbox('1.jpg','Webinar Self-Development','FESt Management')">
+        <div class="cert-img-wrap">
+          <img src="1.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 1</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Pelatihan</p>
+          <p class="cert-title">Webinar Self-Development</p>
+          <p class="cert-issuer">FESt Management (Future Entrepreneur Summit)</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="cert-card" data-cat="moderator" onclick="bukaLightbox('2.jpg','Moderator KORMA','Universitas Muhammadiyah Surakarta')">
+        <div class="cert-img-wrap">
+          <img src="2.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 2</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Moderator</p>
+          <p class="cert-title">Moderator Kolokium Riset Mahasiswa (KORMA)</p>
+          <p class="cert-issuer">Universitas Muhammadiyah Surakarta</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('3.jpg','Peserta Sekolah Politik UMS','BEM Fakultas Psikologi UMS')">
+        <div class="cert-img-wrap">
+          <img src="3.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 3</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Peserta Sekolah Politik UMS</p>
+          <p class="cert-issuer">BEM Fakultas Psikologi UMS</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('4.jpg','Future Entrepreneur Summit 2024','FESt Management & BEM UNS')">
+        <div class="cert-img-wrap">
+          <img src="4.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 4</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Seminar Nasional Future Entrepreneur Summit 2024</p>
+          <p class="cert-issuer">FESt Management & BEM Universitas Sebelas Maret</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="cert-card" data-cat="prestasi" onclick="bukaLightbox('5.jpg','Juara 2 Kompetisi Debat','BEM FKIP UMS')">
+        <div class="cert-img-wrap">
+          <img src="5.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 5</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Prestasi</p>
+          <p class="cert-title">Juara 2 Kompetisi Debat</p>
+          <p class="cert-issuer">Badan Eksekutif Mahasiswa FKIP UMS</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="cert-card" data-cat="pelatihan" onclick="bukaLightbox('6.jpg','Training Public Speaking','GROW PROJECT & BEM UNS')">
+        <div class="cert-img-wrap">
+          <img src="6.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 6</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Pelatihan</p>
+          <p class="cert-title">Training Public Speaking</p>
+          <p class="cert-issuer">GROW PROJECT & BEM Universitas Sebelas Maret</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="cert-card" data-cat="pelatihan" onclick="bukaLightbox('7.jpg','Pelatihan Entrepreneurship','GROW x FESt & BEM UNS')">
+        <div class="cert-img-wrap">
+          <img src="7.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 7</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Pelatihan</p>
+          <p class="cert-title">Pelatihan Entrepreneurship</p>
+          <p class="cert-issuer">GROW x FESt Management & BEM Universitas Sebelas Maret</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('8.jpg','FES GoWorld Asia Futurepreneur Selection Program','FES Go World & BEM UNS')">
+        <div class="cert-img-wrap">
+          <img src="8.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 8</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">FES GoWorld Asia Futurepreneur Selection Program 2024</p>
+          <p class="cert-issuer">FES Go World & BEM Universitas Sebelas Maret</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('9.jpg','Peserta Kompetisi Debat','BEM FKIP UMS')">
+        <div class="cert-img-wrap">
+          <img src="9.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 9</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Peserta Kompetisi Debat</p>
+          <p class="cert-issuer">Badan Eksekutif Mahasiswa FKIP UMS</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('10.jpg','Panitia Kejuaraan Paraclimbing Nasional 2024','FPTI & Yayasan Pranatas')">
+        <div class="cert-img-wrap">
+          <img src="10.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 10</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Panitia Kejuaraan Paraclimbing Nasional 2024</p>
+          <p class="cert-issuer">FPTI & Yayasan Disabilitas Pranatas Indonesia</p>
+          <p class="cert-year-tag">2024</p>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="cert-card" data-cat="moderator" onclick="bukaLightbox('11.jpg','Moderator Webinar Nasional PARTI','HIMATIF FKI UMS')">
+        <div class="cert-img-wrap">
+          <img src="11.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 11</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Moderator</p>
+          <p class="cert-title">Moderator Webinar Nasional PARTI (Parade Teknik Informatika)</p>
+          <p class="cert-issuer">HIMATIF Fakultas Komunikasi dan Informatika UMS</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="cert-card" data-cat="moderator" onclick="bukaLightbox('12.jpg','Moderator DISPORIA','BEM FKI UMS')">
+        <div class="cert-img-wrap">
+          <img src="12.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 12</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Moderator</p>
+          <p class="cert-title">Moderator Diskusi Profesi dan Akademik (DISPORIA)</p>
+          <p class="cert-issuer">BEM Fakultas Komunikasi dan Informatika UMS</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="cert-card" data-cat="komunitas" onclick="bukaLightbox('13.jpg','Humanitarian Volunteer','Ruang Peduli')">
+        <div class="cert-img-wrap">
+          <img src="13.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 13</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Humanitarian Volunteer</p>
+          <p class="cert-issuer">Komunitas Sosial Ruang Peduli</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="cert-card" data-cat="prestasi" onclick="bukaLightbox('14.jpg','Peserta Radio Announcer Competition','UKMB Magenta Radio UNY')">
+        <div class="cert-img-wrap">
+          <img src="14.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 14</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Prestasi</p>
+          <p class="cert-title">Peserta Magenta Announcer Competition</p>
+          <p class="cert-issuer">UKMB Magenta Radio — Universitas Negeri Yogyakarta</p>
+          <p class="cert-year-tag">2025</p>
+        </div>
+        </div>
+
+        <!-- 15 -->
+      <div class="cert-card" data-cat="Komunitas" onclick="bukaLightbox('15.jpg','Peserta Pelatihan Bahasa Isyarat','Ruang Peduli')">
+        <div class="cert-img-wrap">
+          <img src="15.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 14</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Komunitas</p>
+          <p class="cert-title">Peserta Kelasa Bahasa Isyarat</p>
+          <p class="cert-issuer">Ruang Peduli</p>
+          <p class="cert-year-tag">2026</p>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="cert-card" data-cat="Pelatihan" onclick="bukaLightbox('16.jpg','SIML','Smart Computing, IOT and Machine Learning')">
+        <div class="cert-img-wrap">
+          <img src="16.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="cert-placeholder" style="display:none"><div class="cert-placeholder-icon">&#128196;</div><div class="cert-placeholder-text">Slot 16</div></div>
+          <div class="cert-overlay"><span class="cert-overlay-text">&#128269; Lihat</span></div>
+        </div>
+        <div class="cert-body">
+          <p class="cert-tag">Pelatihan</p>
+          <p class="cert-title">Peserta SIML</p>
+          <p class="cert-issuer">SIML</p>
+          <p class="cert-year-tag">2026</p>
+        </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ======================== PAGE: KONTAK ======================== -->
+<div class="page" id="page-kontak">
+  <main>
+    <div class="page-top">
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Get In Touch</span></div>
+      <h1 class="page-h1">Mari <em>Terhubung</em></h1>
+      <p class="page-subtitle">Terbuka untuk kolaborasi, proyek, dan peluang baru</p>
+    </div>
+    <div class="contact-wrap">
+      <aside>
+        <div class="profile-card">
+          <div class="profile-banner"></div>
+          <div class="profile-body">
+            <img src="nopal.jpeg" alt="Muhammad Naufal Santoso" class="avatar"/>
+            <p class="profile-name">Muhammad Naufal Santoso</p>
+            <p class="profile-role">Penyiar &bull; Moderator &bull; Mahasiswa TI</p>
+            <p class="profile-bio">Mahasiswa Teknik Informatika UMS (IPK 3,59) yang aktif di dunia penyiaran Rapma FM, jurnalistik, dan berbagai kegiatan akademik di Surakarta.</p>
+            <div class="open-badge"><div class="open-dot"></div>Terbuka untuk Kolaborasi</div>
+          </div>
+        </div>
+        <div class="contact-links">
+          <p class="sec-label">Informasi Kontak</p>
+          <ul class="link-list">
+            <li class="link-item"><div class="link-icon">&#128231;</div><div class="link-info"><strong>Email</strong><span>naufalpintar395@gmail.com</span></div></li>
+            <li class="link-item"><div class="link-icon">&#128222;</div><div class="link-info"><strong>Telepon / WhatsApp</strong><span><a href="https://wa.me/6208985973591" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:0.4rem">08985973591 <span style="font-size:0.7rem;background:#25d366;color:#fff;padding:0.1rem 0.4rem;border-radius:3px;font-weight:600">Chat</span></a></span></div></li>
+            <li class="link-item"><div class="link-icon">&#128247;</div><div class="link-info"><strong>Instagram</strong><span>@mnaufalsan_</span></div></li>
+            <li class="link-item"><div class="link-icon">&#127968;</div><div class="link-info"><strong>Domisili</strong><span>Purwodadi, Grobogan, Jawa Tengah 5811</span></div></li>
+            <li class="link-item"><div class="link-icon">&#127979;</div><div class="link-info"><strong>Kampus</strong><span>Universitas Muhammadiyah Surakarta</span></div></li>
+          </ul>
+        </div>
+      </aside>
+      <section>
+        <div class="form-card">
+          <p class="form-h3">Kirim Pesan</p>
+          <p class="form-intro">Ada tawaran kolaborasi, undangan MC, Keynote Speaker, moderator, atau ingin berdiskusi? Isi form di bawah, Naufal akan membalas secepatnya.</p>
+          <div class="form-grid">
+            <div class="form-group"><label for="nama">Nama Lengkap</label><input type="text" id="nama" placeholder="Nama Anda"/></div>
+            <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="email@contoh.com"/></div>
+            <div class="form-group"><label for="instansi">Instansi / Organisasi</label><input type="text" id="instansi" placeholder="Nama kampus / komunitas / perusahaan"/></div>
+            <div class="form-group"><label for="tipe">Keperluan</label><select id="tipe"><option value="">Pilih keperluan...</option><option>Undangan Moderator / MC</option><option>Konten</option><option>Kerja Sama Event</option><option>Rekrutmen / Magang</option><option>Lainnya</option></select></div>
+          </div>
+          <div class="form-group"><label for="subjek">Subjek</label><input type="text" id="subjek" placeholder="Undangan moderator webinar..."/></div>
+          <div class="form-group"><label for="pesan">Pesan</label><textarea id="pesan" placeholder="Ceritakan detail keperluanmu..."></textarea></div>
+          <div class="form-footer">
+            <span class="form-note">&#128274; Pesan dikirim langsung via WhatsApp.</span>
+            <button type="button" class="btn-submit" onclick="kirimWA()">Kirim via WhatsApp &#8594;</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="tutupLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="tutupLightbox()">&#10005;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
+
+<footer><p>&#169; 2026 Muhammad Naufal Santoso &mdash; Purwodadi, Grobogan, Jawa Tengah</p></footer>
+
+<script>
+  function navigate(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.getElementById('nav-' + page).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    document.getElementById('navLinks').classList.remove('open');
+  }
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function bukaLightbox(src, judul, penerbit) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = judul + ' — ' + penerbit;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function tutupLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('lightbox-close')) {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') tutupLightbox({target:document.getElementById('lightbox')}); });
+  function filterCert(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.style.display = (cat==='semua' || card.dataset.cat===cat) ? '' : 'none';
+    });
+  }
+  function kirimWA() {
+    const nama=document.getElementById('nama').value.trim();
+    const email=document.getElementById('email').value.trim();
+    const instansi=document.getElementById('instansi').value.trim();
+    const tipe=document.getElementById('tipe').value.trim();
+    const subjek=document.getElementById('subjek').value.trim();
+    const pesan=document.getElementById('pesan').value.trim();
+    if(!nama||!pesan){alert('Mohon isi minimal Nama dan Pesan terlebih dahulu.');return;}
+    let teks='Halo Naufal!\n\nNama: '+nama+'\n';
+    if(email) teks+='Email: '+email+'\n';
+    if(instansi) teks+='Instansi: '+instansi+'\n';
+    if(tipe) teks+='Keperluan: '+tipe+'\n';
+    if(subjek) teks+='Subjek: '+subjek+'\n';
+    teks+='\nPesan:\n'+pesan;
+    window.open('https://wa.me/6208985973591?text='+encodeURIComponent(teks),'_blank');
+  }
+</script>
+</body>
+</html>
